@@ -19,7 +19,7 @@ export const FoodTruck = () => {
             <h1 class="title">Laura Kathryn's House of Hummus</h1>
         </header>
         <article class="choices">
-            <section class="choices__entrees options">
+            <section class="choices__base options">
                 <h2>Entrees</h2>
                 ${Entrees()}
             </section>
