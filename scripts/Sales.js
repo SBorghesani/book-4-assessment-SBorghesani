@@ -1,13 +1,30 @@
-import { getVeggies } from "./database.js"
+import { getEntrees, getPurchases, getSides, getVeggies } from "./database.js"
+const veggies = getVeggies()
+const sides = getSides()
+const entrees = getEntrees()
 
 const buildOrderListItem = (order) => {
-    const veggies = getVeggies()
+    const foundVeggie = veggies.find(
+        (veggie) => {
+            return veggie.id === order.veggieId
+        }
+    )
+    const foundSide = sides.find(
+        (side) => {
+            return side.id === order.sideId
+        }
+    )
+    const foundEntree = entrees.find(
+        (entree) => {
+            return entree.id === order.entreeId
+        }
+    ) 
 
 
-    const total = veggiePrice + entreePrice + sidePrice
+    const total = foundVeggie.price + foundSide.price + foundEntree.price
 
     return `<li>
-        Receipt #${order} = ${total.toLocaleString("en-US", {
+        Receipt #${order.id} = ${total.toLocaleString("en-US", {
             style: "currency",
             currency: "USD"
         })}
